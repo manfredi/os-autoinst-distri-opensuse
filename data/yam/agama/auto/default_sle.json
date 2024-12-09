@@ -1,6 +1,7 @@
 {
   "product": {
-    "id": "SLES_16.0"
+    "id": "SLES_16.0",
+    "registrationCode": "{{SCC_REGCODE}}"
   },
   "user": {
     "fullName": "Bernhard M. Wiedemann",
