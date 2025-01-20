@@ -11,10 +11,10 @@ use testapi qw(assert_script_run data_url get_required_var select_console script
 use autoyast qw(expand_agama_profile);
 
 sub run {
-    my $profile = expand_agama_profile(get_required_var('AGAMA_PROFILE'));
+    my $profile = get_required_var('AGAMA_PROFILE');
     select_console 'root-console';
     script_run("dmesg --console-off");
-    assert_script_run("agama profile import $profile", timeout => 300);
+    assert_script_run("RUST_BACKTRACE=1 agama profile import $profile", timeout => 300);
     script_run("dmesg --console-on");
 }
 
