@@ -885,6 +885,7 @@ sub specific_bootmenu_params {
     }
 
     if (my $agama_install_url = get_var('AGAMA_INSTALL_URL')) {
+        $agama_install_url = shorten_url($agama_install_url) if (is_backend_s390x && !is_opensuse);
         push @params, "agama.install_url=$agama_install_url";
     }
 
