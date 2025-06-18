@@ -34,6 +34,7 @@ use xml_utils;
 
 our @EXPORT = qw(
   detect_profile_directory
+  download_file_dummy
   expand_template
   expand_version
   adjust_network_conf
@@ -842,6 +843,23 @@ sub upload_profile {
     $path =~ s/\//-/g;
 
     copy(hashed_string($file_path), 'ulogs/' . $path);
+}
+
+=head2 download_file_dummy
+
+ download_file_dummy()
+
+ Download the file dummy.xml
+
+=cut
+
+sub download_file_dummy {
+    my $path = 'dummy.xml';
+    my $content = get_test_data('yam/autoyast/dummy.xml');
+    save_tmp_file($path, $content);
+    record_info("Dowload data", "yam/autoyast/dummy.xml");
+    record_info("Content", $content);
+    record_info("Local URL", autoinst_url("/files/$path"));
 }
 
 =head2 inject_registration

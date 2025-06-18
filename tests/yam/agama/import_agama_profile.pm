@@ -8,9 +8,10 @@ use base Yam::Agama::patch_agama_base;
 use strict;
 use warnings;
 use testapi qw(assert_script_run data_url get_required_var select_console script_run);
-use autoyast qw(expand_agama_profile generate_json_profile);
+use autoyast qw(expand_agama_profile generate_json_profile download_file_dummy);
 
 sub run {
+    download_file_dummy() if get_var('AGAMA_PROFILE_OPTIONS') =~ /files=true/;
     my $profile = get_required_var('AGAMA_PROFILE');
     my $profile_url = ($profile =~ /\.libsonnet/) ?
       generate_json_profile($profile) :
