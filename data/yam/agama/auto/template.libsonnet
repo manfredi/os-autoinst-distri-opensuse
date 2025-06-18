@@ -9,6 +9,7 @@ local security_lib = import 'lib/security.libsonnet';
 
 function(bootloader=false,
          dasd=false,
+         files=false,
          localization='',
          packages='',
          patterns='',
@@ -25,6 +26,7 @@ function(bootloader=false,
          user=true) {
   [if bootloader == true then 'bootloader']: base_lib['bootloader'],
   [if dasd == true then 'dasd']: dasd_lib.dasd(),
+  [if files == true then 'files']: base_lib['files'],
   [if localization == true then 'localization']: base_lib['localization'],
   [if patterns != '' || packages != '' then 'software']: std.prune({
     patterns: if patterns != '' then std.split(patterns, ','),

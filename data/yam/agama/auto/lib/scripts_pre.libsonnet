@@ -10,6 +10,15 @@
       fi
     |||
   },
+  download_file: {
+    name: 'download file',
+    content: |||
+      #!/usr/bin/env bash
+      mkdir /files
+      cd /files
+      curl -skO https://raw.githubusercontent.com/os-autoinst/os-autoinst-distri-opensuse/master/data/yam/autoyast/dummy.xml
+    |||
+  },
   wipe_filesystem: {
     name: 'wipefs',
     content: |||

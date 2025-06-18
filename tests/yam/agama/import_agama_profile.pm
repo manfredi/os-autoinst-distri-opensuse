@@ -18,11 +18,15 @@ sub run {
 
     select_console 'install-shell';
 
+    assert_script_run("curl -sk -o profile.json $profile_url"); # debug
+    $profile_url = 'profile.json';
+
     # Workaround to import profile in each Agama version
     my $command = script_run('agama config load --help | grep URL_OR_PATH') == '0' ?
-      "agama config load $profile_url" : "agama profile import $profile_url";
+      "agama config load $profile_url" : "agama profile import file:///$profile_url";
 
     assert_script_run($command, timeout => 300);
+    assert_script_run("cat /files/dummy.xml"); # debug
 }
 
 1;
