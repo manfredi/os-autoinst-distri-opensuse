@@ -17,7 +17,7 @@ schedule:
   add_on_product:
     - installation/add_on_product_installation/accept_add_on_installation
   system_role:
-    - installation/system_role/accept_selected_role_SLES_with_GNOME
+    - installation/system_role/select_role_text_mode
   software:
     - installation/select_visible_patterns_from_bottom
   system_preparation:
@@ -26,12 +26,11 @@ schedule:
     - console/force_scheduled_tasks
     - shutdown/grub_set_bootargs
   system_validation:
-    - console/validate_installed_packages
-    - console/validate_installed_patterns
     - console/scc_cleanup_reregister
     - console/install_packages_simple
     - console/scc_deregistration
     - console/firewalld_add_port
     - console/suseconnect_scc
+    - console/yast2_clone_system
     - shutdown/cleanup_before_shutdown
     - shutdown/shutdown
